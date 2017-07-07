@@ -1,14 +1,35 @@
 /* fluid 5 columns */
 .grid-sizer,
 .grid-item { 
-	width: 25%; 
+	width: 20%; 
 }
 
 .gutter-sizer {
-	width: 4%;
+	width: 3%;
 }
 
 .grid-item {
-	margin-bottom: : 10px;
+	margin-bottom: 10px;
 }
+
+/*.grid {
+	left: 20px;
+}*/
+
+h1,label {
+	color: #ffffff;
+}
+
+input,button {
+	margin:1px;
+}
+
+form {
+	margin-top:15px;
+}
+
+p {
+	color: #ffffff;
+}
+
 /* 2 columns wide */

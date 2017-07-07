@@ -1,6 +1,6 @@
 ///learn how giphy API works, and test it out before building off of it
 	//vars needed: array of strings for the theme
-	var topics = ["Stalone","cat","monkey","food","teacher","cartoon","science","balloon"];
+	var topics = ["movie","cat","slow motion","food","dog","cartoon","science","balloon"];
 	
 
 // 2. Your app should take the topics in this array and create buttons in your HTML.
@@ -59,14 +59,14 @@
 
 					var p = $("<p class='text-center'>").text("Rating: " + rating);
 
-					var gifImage = $("<img class='img-responsive'>");
+					var gifImage = $("<img class='img-responsive center-block'>");
 					// debugger;
 					gifImage.attr({"src": results[i].images.fixed_width_still.url,
 									"data-state": "still",
 									"data-still": results[i].images.fixed_width_still.url,
 									"data-animate": results[i].images.fixed_width.url});
 					
-					var aTag = $("<a href='#' class='gif'>");
+					var aTag = $("<a href='#' class='gif text-center'>");
 					aTag.append(gifImage);
 					aTag.append(p);
 
@@ -75,22 +75,32 @@
 					$(".grid").prepend(gifDiv);
 				}
 					
-					// var $grid = $('.grid').masonry({
-					//   // options
-					//   itemSelector: ".grid-item",
-					//   columnWidth: ".grid-sizer",
-					//   // percentPosition: true,
-					//   gutter: "gutter-sizer",
-					// });
 
-					// function onLayout () {
-					// 	console.log("layout done ")
-					// }
+					var $grid = $('.grid').masonry({
+					  // options
+					  initLayout: false,
+					  itemSelector: ".grid-item",
+					  columnWidth: ".grid-sizer",
+					  // percentPosition: true,
+					  gutter: ".gutter-sizer",
+					  horizontalOrder: true,
+					  containerStyle: null,
+					  transitionDuration: '0.2s'
+					});
+
+					function onLayout () {
+						console.log("layout done ")
+					}
 
 					// $grid.on("layoutComplete", onLayout);
-					// $grid.imagesLoaded().progress( function() {
-					//   $grid.masonry('layout');
-					// });
+					debugger;
+					$grid.imagesLoaded().always( function() {
+					  $grid.masonry('layout');
+					});
+
+					// $grid.on('layoutComplete',function(event,laidOutItems) {
+
+					// })
 			});
 
 		})
@@ -113,25 +123,28 @@
 			//add the button to the div
 			$(".topics-Btn").append(a);
 		}
-			var k=0;
 
-			for (var j = 0; j < $(".giphyBtn").length; j++) {
 				
 				// assign a new color for each button displayed to the DOM, in the order listed in the array
-				if ($(".giphyBtn").length > btnArr.length) {
-					$(".giphyBtn").eq(btnArr.length + k).addClass(btnArr[k]);
+			if ($(".giphyBtn").length > btnArr.length) {
+				var k=0;
+				var temp= btnArr.length;
+				// debugger;
+
+				for (var j = 0; j < $(".giphyBtn").length - temp; j++) {
+					btnArr.push(btnArr[k]),
+					$(".giphyBtn").eq(btnArr.length -1).addClass(btnArr[k]);
 					k++;
-				} else {
-				a.addClass(btnArr[j]);
 				}
-			//if topics length is longer than btnArr length, fill the array with the same array order, and assign the class
 			}
+			//if topics length is longer than btnArr length, fill the array with the same array order, and assign the class
 	}
 
 	function inputGifs () {
 		$(".submit-btn").on("click", function() {
 			event.preventDefault();
 			// debugger;
+			//if text has string beginning with 'explo' delete string
 			var gifSearch = $("#inputGif").val().trim();
 
 			topics.push(gifSearch);
@@ -144,7 +157,7 @@
 		// renderButtons();
 	function animateGifs () {
 		event.preventDefault();
-		debugger;
+		// debugger;
 			
 			var state = $(this).attr("data-state");
 
@@ -158,6 +171,7 @@
 	};
 
 $(document).ready(function() {
+	$("body").css("backgroundColor","#000000");
 	start();
 });
 		//javascript, jQuery
