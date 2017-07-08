@@ -75,7 +75,7 @@
 					$(".grid").prepend(gifDiv);
 
 					if (grid===true) {
-						debugger;
+						// debugger;
 						// $('.grid').imagesLoaded( function() {
 							$grid.masonry("prepended",gifDiv).imagesLoaded().progress(function () {
 								$grid.masonry('layout');
@@ -100,7 +100,7 @@
 						  // options
 						  // initLayout: false,
 						  itemSelector: ".grid-item",
-						  columnWidth: ".grid-sizer",
+						  // columnWidth: ".grid-sizer",
 						  percentPosition: true,
 						  gutter: ".gutter-sizer",
 						  horizontalOrder: true,
