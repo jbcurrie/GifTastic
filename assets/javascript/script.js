@@ -1,7 +1,8 @@
 ///learn how giphy API works, and test it out before building off of it
 	//vars needed: array of strings for the theme
 	var topics = ["movie","cat","slow motion","food","dog","cartoon","science","balloon"];
-	
+	var grid = false;
+	var $grid;
 
 // 2. Your app should take the topics in this array and create buttons in your HTML.
   	//* Try using a loop that appends a button for each string in the array
@@ -20,7 +21,6 @@
 
 	function getGif() {
 		$(".giphyBtn").on("click",function(event) {
-			
 
 			event.preventDefault();
 			
@@ -46,7 +46,6 @@
 				method: "GET"
 			})
 			.done(function(response) {
-
 					var results = response.data;
 
 					console.log(results);
@@ -72,31 +71,63 @@
 
 					gifDiv.append(aTag);
 
+					
 					$(".grid").prepend(gifDiv);
-				}
+
+					if (grid===true) {
+						debugger;
+						// $('.grid').imagesLoaded( function() {
+							$grid.masonry("prepended",gifDiv).imagesLoaded().progress(function () {
+								$grid.masonry('layout');
+							});
+							// $grid.masonry( 'prepended', gifDiv );
+							//try gifDiv instead
+						// });
+					}
 					
 
-					var $grid = $('.grid').masonry({
-					  // options
-					  initLayout: true,
-					  itemSelector: ".grid-item",
-					  columnWidth: ".grid-sizer",
-					  // percentPosition: true,
-					  gutter: ".gutter-sizer",
-					  horizontalOrder: true,
-					  containerStyle: null,
-					  transitionDuration: '0.2s'
-					});
+				}
+					//should append new items to the masonry
+					//if grid item has been styled, position absolute
+					// if ($(".grid-item").css("position") !== "absolute") {
 
-					function onLayout () {
-						console.log("layout done ")
+					//masonry function, runs once
+
+
+					if (grid===false) {
+
+						$grid = $('.grid').masonry({
+						  // options
+						  // initLayout: false,
+						  itemSelector: ".grid-item",
+						  columnWidth: ".grid-sizer",
+						  percentPosition: true,
+						  gutter: ".gutter-sizer",
+						  horizontalOrder: true,
+						  containerStyle: null,
+						  transitionDuration: '0.2s'
+						});
+
+						function onLayout () {
+							console.log("layout done ")
+						}
+
+						// $grid.on("layoutComplete", onLayout);
+						// debugger;
+						$grid.imagesLoaded().progress( function() {
+						  $grid.masonry('layout');
+						  grid = true;
+						})
 					}
 
-					// $grid.on("layoutComplete", onLayout);
-					debugger;
-					$grid.imagesLoaded().always( function() {
-					  $grid.masonry('layout');
-					});
+
+
+					// } else {
+
+					// 	debugger;
+					// 	$grid.masonry( 'appended', ".grid-item" )
+					// }
+					//}
 
 					// $grid.on('layoutComplete',function(event,laidOutItems) {
 
