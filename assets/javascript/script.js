@@ -66,7 +66,7 @@
 									"data-still": results[i].images.fixed_width_still.url,
 									"data-animate": results[i].images.fixed_width.url});
 					
-					var aTag = $("<a href='#' class='gif text-center'>");
+					var aTag = $("<a href='#!' class='gif text-center'>");
 					aTag.append(gifImage);
 					aTag.append(p);
 
@@ -78,7 +78,7 @@
 
 					var $grid = $('.grid').masonry({
 					  // options
-					  initLayout: false,
+					  initLayout: true,
 					  itemSelector: ".grid-item",
 					  columnWidth: ".grid-sizer",
 					  // percentPosition: true,
