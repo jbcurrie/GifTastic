@@ -1,8 +1,14 @@
 ///learn how giphy API works, and test it out before building off of it
 	//vars needed: array of strings for the theme
 	var topics = ["movie","cat","slow motion","food","dog","cartoon","science","balloon"];
+	//boolean switch to determine which action masonry takes after it's completed once
 	var grid = false;
 	var $grid;
+	//use detach to remove an element from the DOM. could re
+	// debugger;
+	// gifObj = {
+	// 	cloneGrid:$(".grid").clone(true)
+	// }
 
 // 2. Your app should take the topics in this array and create buttons in your HTML.
   	//* Try using a loop that appends a button for each string in the array
@@ -16,7 +22,10 @@
 		renderButtons();
 		getGif();
 		inputGifs();
-		$("body").on("click","img",animateGifs);
+		animateGifs();
+		clearGifs();
+		// cloneGrid = $(".grid").clone();
+
 	};
 
 	function getGif() {
@@ -95,12 +104,13 @@
 
 
 					if (grid===false) {
+						debugger;
 
 						$grid = $('.grid').masonry({
 						  // options
 						  // initLayout: false,
 						  itemSelector: ".grid-item",
-						  // columnWidth: ".grid-sizer",
+						  columnWidth: ".grid-sizer",
 						  percentPosition: true,
 						  gutter: ".gutter-sizer",
 						  horizontalOrder: true,
@@ -187,7 +197,8 @@
 
 		// renderButtons();
 	function animateGifs () {
-		event.preventDefault();
+		$("body").on("click","img", function() {	
+			event.preventDefault();
 		// debugger;
 			
 			var state = $(this).attr("data-state");
@@ -199,7 +210,24 @@
 				$(this).attr("src", $(this).attr("data-still"));
 				$(this).attr("data-state", "still");
 			}
+		});
 	};
+
+	function clearGifs () {
+		// debugger;
+		// var cloneGrid = $(".grid").clone();
+
+		$(".stamp1").on("click", function() {
+			debugger;
+		  // remove all grid elements
+		  $grid.masonry( 'remove', $(".grid-item"))
+		    // layout remaining item elements
+		    	// .masonry('layout');
+			// grid =false;
+			// start();
+
+		});
+	}
 
 $(document).ready(function() {
 	$("body").css("backgroundColor","#000000");
