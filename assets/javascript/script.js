@@ -68,15 +68,15 @@
 
 					if (grid===true) {
 						
-							$grid.masonry("prepended",gifDiv).imagesLoaded().progress(function () {
-								$grid.masonry('layout');
-							});
+						$grid.masonry("prepended",gifDiv).imagesLoaded().progress(function () {
+							$grid.masonry('layout');
+						});
 					}
 				}
 
 
 				if (grid===false) {
-					debugger;
+					// debugger;
 
 					$grid = $('.grid').masonry({
 					  itemSelector: ".grid-item",
@@ -146,6 +146,8 @@
 
 			renderButtons();
 			getGif();
+			// debugger;
+			$("#inputGif").val(" ");
 		});
 	}
 
@@ -167,7 +169,6 @@
 	};
 
 	function clearGifs () {
-
 
 		$(".stamp1").on("click", function() {
 			
