@@ -88,9 +88,9 @@
 					  transitionDuration: '0.2s'
 					});
 
-					function onLayout () {
-						console.log("layout done ")
-					}
+					// function onLayout () {
+					// 	console.log("layout done ")
+					// }
 
 					$grid.imagesLoaded().progress( function() {
 					  $grid.masonry('layout');
@@ -149,7 +149,7 @@
 		});
 	}
 
-		// renderButtons();
+
 	function animateGifs () {
 		$("body").on("click","img", function() {	
 			event.preventDefault();
@@ -170,7 +170,7 @@
 
 
 		$(".stamp1").on("click", function() {
-			debugger;
+			
 		  // remove all grid elements
 		  $grid.masonry( 'remove', $(".grid-item"))
 
