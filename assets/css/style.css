@@ -11,16 +11,14 @@
 	display: none;	
 }
 
-
-
 .affix:nth-child(2) {
 	top:56px;
 	padding-top: 0px;
+	margin-bottom: 200px;
 	width:90%;
 	background-color: #000000;
 	z-index: 10;
 }
-
 
 .gutter-sizer {
 	width: 4%;
@@ -49,4 +47,39 @@ form {
 
 p {
 	color: #ffffff;
+}
+.header{
+	width: 100%
+}
+.box {
+	box-sizing: border-box;
+	float:left;
+	/* width: 50%; */
+}
+h3.box {
+	padding: 10px 0 0 10px;
+	transition: font-size 0.5s, color 2s;
+}
+
+h3.box:hover {
+	font-size: 250%;
+	color: #ff6622;;
+}
+h1.box {
+	color: red;
+	-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+	-webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+	animation-name: example;
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+}
+@keyframes example {
+	0%   {color: #d10000}
+	14.285% {color:#ff6622;}
+	28.571% {color: #ffda21;}
+	42.875% {color:#33dd00;}
+	57.142% {color:#1133cc;}
+	85.714% {color:#220066;}
+	100.00% {color:#330044;}
 }
